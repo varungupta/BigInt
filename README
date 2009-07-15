@@ -1,0 +1,11 @@
+There have been many C++ classes implementing arbitrary-precision arithmetic. 
+
+This implementation represents large integers as array of smaller integers unlike other libraries which implement as array of characters.
+
+Example:
+
+9999999999123456789123456 will be represented as an array, {789123456, 999123456, 9999999}
+
+Whereas existing libraries represent the same number as {'9','9','9','9','9','9','9','9','9','9','1','2','3','4','5','6','7','8','9','1','2','3','4','5','6'}
+
+My implementation enables faster arithmatic as it involves less number of operations.
