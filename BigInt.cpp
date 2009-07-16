@@ -68,8 +68,10 @@ class BigInt	{
 		BigInt operator - (BigInt);
 		BigInt operator * (long long);
 		BigInt operator * (BigInt);
-		BigInt operator / (int);	// TODO
+		BigInt operator / (long long);	// TODO
 		BigInt operator / (BigInt);	// TODO
+		BigInt operator % (long long);	// TODO
+		BigInt operator % (BigInt);	// TODO
 
 		// Methods
 		string toString(void);		// Serializes BigInt object
