@@ -138,6 +138,14 @@ BigInt :: BigInt (const BigInt &n)	{
 	memcpy(content, n.content, MAX * sizeof(long long));
 }
 
+/**
+ * BigInt::addLSBucket shifts the contents of BigInt::content array by numBucketsToBeAdded
+ * places. This is needed while computing the product of two BigInt instances.
+ * In case of multiplication of two integers:
+ * 6374 * 23 is computed as 6374 * 3 + 6374 * 2 * 10
+ * Multiplication by 10 just shifts the content. Same purpose is served by BigInt::addLSBucket
+ * in our context.
+ */
 void BigInt :: addLSBucket (int numBucketsToBeAdded)	{
 
 	if (length + numBucketsToBeAdded > MAX)	return;
