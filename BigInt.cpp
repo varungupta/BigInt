@@ -45,10 +45,11 @@ class BigInt	{
 
 		// Assignment Operators
 		BigInt operator = (BigInt);
+		BigInt operator = (long long);	// TODO
 
 		// Comparison operators
 		bool operator == (BigInt);
-		bool operator == (int);		// TODO
+		bool operator == (long long);	// TODO
 		bool operator != (BigInt);
 		bool operator != (int);		// TODO
 		bool operator < (BigInt);
@@ -61,11 +62,11 @@ class BigInt	{
 		bool operator >= (int);		// TODO
 
 		// Arithmetic operators
-		BigInt operator + (int);	// TODO
+		BigInt operator + (long long);
 		BigInt operator + (BigInt);
-		BigInt operator - (int);	// TODO
+		BigInt operator - (long long);
 		BigInt operator - (BigInt);
-		BigInt operator * (int);
+		BigInt operator * (long long);
 		BigInt operator * (BigInt);
 		BigInt operator / (int);	// TODO
 		BigInt operator / (BigInt);	// TODO
@@ -312,6 +313,10 @@ BigInt BigInt :: operator + (BigInt n)	{
 	}
 }
 
+BigInt BigInt :: operator + (long long n)	{
+	return (*this) + BigInt(n);
+}
+
 BigInt BigInt :: operator - (BigInt n)	{
 
 	if (sign == n.sign)	{
@@ -373,7 +378,11 @@ BigInt BigInt :: operator - (BigInt n)	{
 	}
 }
 
-BigInt BigInt :: operator * (int n)	{
+BigInt BigInt :: operator - (long long n)	{
+	return (*this) - BigInt(n);
+}
+
+BigInt BigInt :: operator * (long long n)	{
 	if (n == 0 || length == 0)	return BigInt(0);
 
 	long long carry = 0, tempProduct;
@@ -420,6 +429,7 @@ void BigInt :: debug (void)	{
 int main ()
 {
 	BigInt a("9999999999123456789123456"), b("12345678912"), c;
+	cout << (a - 12345678912).toString() << endl;
 	c = a + b;
 	cout << a.toString() + " + " + b.toString() + " = " + c.toString() << endl;
 	c = a - b;
